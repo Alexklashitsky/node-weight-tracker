@@ -8,7 +8,7 @@
 		"initdb": "node tools/initdb.js",
 		"lint": "eslint --fix ./",
 		"test": "echo \"Error: no test specified\" && exit 1"
-    		"start": "node src/index.js"
+
 
 		
 	},
