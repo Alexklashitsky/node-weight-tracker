@@ -1,11 +1,14 @@
-FROM node:14
-ENV PORT 8080
+FROM node:14-alpine
+WORKDIR /app
+COPY ./package*.json ./
+
+RUN npm install \
+	&& npm audit fix --force \
+
+COPY . /app
+
 EXPOSE 8080
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-COPY package.json .
-RUN npm install
-COPY . .
 
-CMD ["npm", "start"]
+
+ENTRYPOINT ["node", "src/index.js" "./chekdb.sh"]
