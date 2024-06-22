@@ -1,15 +1,14 @@
+
+      kind: Service
 apiVersion: v1
-kind: Service
 metadata:
   name: test
   namespace: app
   labels:
     kubernetes.azure.com/generator: devhub
 spec:
-  type: LoadBalancer
   selector:
     app: test
   ports:
-    - protocol: TCP
-      port: 8080
+    - port: 5678 
       targetPort: 8080
