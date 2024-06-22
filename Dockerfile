@@ -11,4 +11,4 @@ EXPOSE 8080
 
 
 
-ENTRYPOINT ["node", "src/index.js" "./chekdb.sh"]
+ENTRYPOINT ["node", "src/index.js" ]
