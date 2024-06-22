@@ -1,24 +1,40 @@
-apiVersion: apps/v1
+apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: test
+  name: tracker
   labels:
-    app: test
-    kubernetes.azure.com/generator: devhub
-  namespace: app
+    app: tracker 
 spec:
-  replicas: 1
+  replicas: 3
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2
+      maxSurge: 8
   selector:
     matchLabels:
-      app: test
+      app: tracker
   template:
     metadata:
       labels:
-        app: test
+        app: tracker 
     spec:
       containers:
         - name: test
           image: akstestsela.azurecr.io/image-workflow-1718894485555:latest
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 80
+
+
+---
+
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: tracker-service
+spec:
+  selector:
+    app: tracker
+  ports:
+    - port: 5678 
+      targetPort: 8080
