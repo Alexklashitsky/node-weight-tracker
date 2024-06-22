@@ -6,10 +6,12 @@ COPY ./package*.json ./
 RUN npm install \
 	&& npm audit fix --force \
 
-COPY . /app
+COPY . .
 
 EXPOSE 8080
 
 
 
 ENTRYPOINT ["node", "src/index.js" ]
+
+
