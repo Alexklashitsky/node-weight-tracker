@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: test
-          image: akstestsela.azurecr.io/image-workflow-1718894485555:latest
+          image: acralexsela.azurecr.io/traker:latest
 
 
 
